@@ -2,9 +2,9 @@
 
  Portfolio site including links to all projects and contact information.
 
+## Key Technologies, Packages, and Gems:
 
- 
-
-## Tools Used:
-
-HTML, CSS, SASS, JavaScript
+HTML<br>
+CSS <br>
+SASS <br>
+JavaScript
