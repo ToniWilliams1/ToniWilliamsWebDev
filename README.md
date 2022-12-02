@@ -10,6 +10,6 @@ SASS <br>
 JavaScript
 
 ## Core Features
-Allow users to see previous works.
-Give out contact information.
+Allow users to see previous works. <br>
+Give out contact information. <br>
 Allow users to send a message to book a consultation.
