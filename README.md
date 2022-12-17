@@ -5,9 +5,9 @@ Portfolio site for Toni Williams Web Development.
 ## Key Technologies, Packages, and Gems:
 
 CSS <br>
-SASS <br>
 HTML<br>
-JavaScript
+JavaScript <br>
+Netlify
 
 ## Core Features
 Allow users to see previous works. <br>
