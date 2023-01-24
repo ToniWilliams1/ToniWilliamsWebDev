@@ -107,6 +107,17 @@
 	font-size: 15px;
 }
 
+.card .contain{
+    margin: 2em 3.5em;
+    display: flex;
+    gap: 1em;
+}
+
+.card h2{
+    margin-left: 2em;
+    font-weight: bolder;
+}
+
 
 :root {
 
@@ -1495,6 +1506,10 @@ blockquote cite {
 
 blockquote cite:before {
     content : "\2014 \0020";
+}
+
+.tech{
+    color:hsla(174, 65%, 40%, 1)
 }
 
 blockquote cite,
@@ -3231,13 +3246,13 @@ img.u-pull-left {
 }
 
 .s-intro__bg {
-    background-image    : url(../portfolio/blue.jpg);
+    background-image    : url(../images/images.jpeg);
     background-repeat   : no-repeat;
     background-position : center;
     background-size     : cover;
     width               : 100%;
     position            : absolute;
-    top                 : calc(1.5 * var(--text-huge-line-height) * var(--text-huge) * var(--text-huge-multiplier));
+    top                 : calc(1 * var(--text-huge-line-height) * var(--text-huge) * var(--text-huge-multiplier));
     right               : 0;
     bottom              : 0;
     left                : 0;
@@ -3265,7 +3280,7 @@ img.u-pull-left {
     letter-spacing : normal;
     text-align     : center;
     margin         : 0;
-    padding-bottom : calc(10 * var(--space));
+    padding-bottom : calc(7 * var(--space));
     position       : relative;
 }
 
@@ -3323,9 +3338,10 @@ img.u-pull-left {
     line-height      : var(--vspace-1_25);
     color            : var(--color-text-light);
     margin-top       : calc(var(--vspace-3) * -1);
-    margin-bottom    : var(--vspace-3_5);
+    /* margin-bottom    : var(--vspace-3_5); */
     padding          : var(--vspace-2_5) var(--vspace-3) var(--vspace-2);
     position         : relative;
+    margin-bottom: 0%;
 }
 
 .s-intro__about::before {
