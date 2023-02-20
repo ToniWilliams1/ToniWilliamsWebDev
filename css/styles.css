@@ -107,10 +107,19 @@
 	font-size: 15px;
 }
 
+
+
 .card .contain{
     margin: 2em 3.5em;
     display: flex;
     gap: 1em;
+
+}
+
+@media screen and (max-width: 800px) {
+    .card .contain {
+       flex-direction: column;
+    }
 }
 
 .card h2{
