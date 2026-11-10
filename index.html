@@ -1,335 +1,489 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js" >
+<!doctype html>
+<html lang="en">
 <head>
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Toni Williams</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Toni Williams: investigator moving into cybersecurity. Application security testing, digital forensics coursework, and full-stack web development.">
+<link rel="icon" href="favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap">
+<style>
+/* Layout: one left-aligned column of case material; projects as plain rows. Look matches the original site: dark charcoal, Inter + Manrope, teal accent. */
+:root {
+  --paper: #101112;      /* original page charcoal */
+  --sheet: #161718;      /* raised surface */
+  --btn: #2c2c2d;        /* original button grey */
+  --ink: #ffffff;        /* headings */
+  --text: #a1a1a2;       /* body text */
+  --muted: #8a8a8b;
+  --rule: rgba(255, 255, 255, 0.08);
+  --teal: #2fbfb0;       /* original teal accent, lifted slightly for contrast */
+  --tag: #f2e7a8;        /* original pale yellow */
+  --tag-ink: #141516;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-head: "Manrope", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --measure: 64ch;
+  color-scheme: dark;
+}
 
-    <title>Toni Williams</title>
-    <script>
-        document.documentElement.classList.remove('no-js');
-        document.documentElement.classList.add('js');
-    </script>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--teal); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+h1, h2, h3, h4 { font-family: var(--font-head); color: var(--ink); }
 
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/styles.css">
-<script src="https://kit.fontawesome.com/71d3788d75.js" crossorigin="anonymous"></script>
-    <!-- favicons
-    ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- Header ---------- */
+.top {
+  display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem;
+  justify-content: space-between; align-items: center;
+  padding-block: 1.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+.top .mark { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; color: var(--teal); text-decoration: none; }
+.top nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; }
+.top nav a {
+  color: var(--text); text-decoration: none;
+  font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3em;
+}
+.top nav a:hover { color: var(--ink); }
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 2rem 3.5rem;
+  padding-block: 4rem 4.5rem;
+  align-items: end;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(3.4rem, 9vw, 7.2rem);
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.hero .lede {
+  margin: 1.75rem 0 0;
+  max-width: 36ch;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--text);
+  text-wrap: pretty;
+}
+.record { margin: 0; display: grid; gap: 0.9rem; }
+.record div { display: grid; gap: 0.1rem; }
+.record dt { font-size: 0.7rem; color: var(--teal); text-transform: uppercase; letter-spacing: 0.2em; font-weight: 600; }
+.record dd { margin: 0; font-size: 0.95rem; line-height: 1.45; color: var(--ink); }
+.portrait {
+  aspect-ratio: 4 / 5; width: 100%; max-width: 100%;
+  object-fit: cover; object-position: 50% 20%;
+  margin-bottom: 1.25rem;
+}
+
+/* ---------- Sections ---------- */
+section { padding-block: 5rem; border-top: 1px solid var(--rule); }
+.sec-head { display: grid; gap: 0.9rem; margin-bottom: 3rem; max-width: var(--measure); }
+.sec-head h2 {
+  margin: 0; font-size: 0.8rem; font-weight: 600; color: var(--teal);
+  text-transform: uppercase; letter-spacing: 0.35em;
+}
+.sec-head p {
+  margin: 0; font-family: var(--font-head); color: var(--ink);
+  font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.25; font-weight: 600; text-wrap: balance;
+}
+
+/* ---------- Buttons (original style) ---------- */
+.links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.links a {
+  display: inline-flex; align-items: center; min-height: 3rem;
+  padding: 0 1.5rem;
+  background: var(--btn); color: var(--ink); text-decoration: none;
+  font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em;
+  transition: background-color 0.2s, color 0.2s;
+}
+.links a:hover { background: var(--ink); color: #000; }
+
+/* ---------- Featured exhibit: security assessment ---------- */
+.exhibit-main {
+  position: relative;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  padding: 2.75rem clamp(1.25rem, 4vw, 3rem) 2.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 2.5rem 3.5rem;
+}
+.exhibit-main h3 { margin: 0 0 0.9rem; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.15; font-weight: 700; text-wrap: balance; }
+.exhibit-main p { margin: 0 0 1rem; max-width: 52ch; }
+.scope { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin: 1.25rem 0 1.5rem; padding: 0; list-style: none; }
+.scope li { font-size: 0.95rem; color: var(--teal); }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 1.2rem; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 0.75rem; align-items: baseline; }
+.steps li::before {
+  content: counter(step); font-family: var(--font-head); font-weight: 700;
+  font-size: 1.5rem; line-height: 1; color: var(--teal); font-variant-numeric: tabular-nums;
+}
+.steps strong { display: block; font-family: var(--font-head); font-weight: 700; color: var(--ink); }
+.steps span { font-size: 0.97rem; }
+.note { color: var(--muted); font-size: 0.9rem; }
+
+.transfer {
+  margin-top: 3.5rem;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 2.5rem;
+}
+.transfer h4, .creds h4 { margin: 0 0 0.4rem; font-size: 1.1rem; font-weight: 700; }
+.transfer p { margin: 0; font-size: 0.98rem; }
+.creds {
+  margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 2.5rem;
+}
+.creds ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.4rem; }
+.creds li { color: var(--ink); }
+.creds li span { color: var(--muted); }
+
+/* ---------- Development exhibits ---------- */
+.apps { display: grid; gap: 5rem; }
+.app {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 1.5rem 3rem; align-items: center;
+}
+.app:nth-child(even) .shot { order: 2; }
+.shot { position: relative; }
+.shot img {
+  width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top;
+  background: var(--sheet);
+}
+.app h3 { margin: 0 0 0.5rem; font-size: 1.9rem; line-height: 1.15; font-weight: 700; }
+.app p { margin: 0 0 1.25rem; }
+.stack { color: var(--teal); font-size: 0.95rem; }
+.app .stack { margin-bottom: 1rem; }
+
+.small-head { margin: 6rem 0 2rem; font-size: 1.5rem; font-weight: 700; }
+.sites { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 3rem 1.5rem; }
+.site .shot img { aspect-ratio: 16 / 10; }
+.site h4 { margin: 1.1rem 0 0.25rem; font-size: 1.15rem; font-weight: 700; }
+.site p { margin: 0 0 0.9rem; font-size: 0.95rem; }
+.site .links a { min-height: 2.5rem; padding: 0 1.1rem; font-size: 0.62rem; }
+
+/* ---------- Experience timeline ---------- */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.timeline li {
+  display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 0.25rem 2rem;
+  padding-block: 1.6rem; border-bottom: 1px solid var(--rule);
+}
+.timeline li:first-child { border-top: 1px solid var(--rule); }
+.when { color: var(--teal); font-variant-numeric: tabular-nums; font-size: 0.9rem; padding-top: 0.2rem; }
+.timeline h3 { margin: 0; font-size: 1.25rem; font-weight: 700; }
+.timeline .org { margin: 0 0 0.35rem; color: var(--muted); }
+.timeline p { margin: 0; max-width: 60ch; }
+
+/* ---------- Writing + contact ---------- */
+.posts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 3rem; }
+.posts h3 { margin: 0 0 0.5rem; font-size: 1.3rem; font-weight: 700; line-height: 1.3; }
+.posts h3 a { color: var(--ink); text-decoration-color: var(--teal); }
+.posts p { margin: 0; }
+
+.contact .big {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 2.5rem;
+  font-family: var(--font-head); font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 700;
+}
+.contact .big a { color: var(--ink); text-decoration-color: var(--teal); text-decoration-thickness: 3px; }
+.contact .big a:hover { color: var(--teal); }
+footer { padding-block: 2rem 3rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--rule); }
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 2.5rem 3rem; }
+  .hero aside { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+  .portrait { margin: 0; }
+  .exhibit-main, .app { grid-template-columns: minmax(0, 1fr); }
+  .app:nth-child(even) .shot { order: 0; }
+  .transfer, .creds, .posts { grid-template-columns: minmax(0, 1fr); }
+  .timeline li { grid-template-columns: minmax(0, 1fr); }
+  section { padding-block: 3.5rem; }
+  .top nav { gap: 0.5rem 1.1rem; }
+  .top nav a { letter-spacing: 0.2em; }
+}
+@media (max-width: 420px) {
+  .hero aside { grid-template-columns: 112px minmax(0, 1fr); gap: 1rem; }
+}
+</style>
 </head>
+<body>
 
-<body id="top">
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#top">Toni Williams</a>
+    <nav aria-label="Sections">
+      <a href="#security">Security</a>
+      <a href="#development">Development</a>
+      <a href="#experience">Experience</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <!-- preloader
-    ================================================== -->
- <div id="preloader">
-        <div id="loader">
-        </div>
-    </div>  
-
-    <!-- page wrap
-    ================================================== -->
-    <div class="s-pagewrap">
-
-        <!-- # site header 
-        ================================================== -->
-        <header class="s-header">
-            <div class="s-header__block">
-                <div class="s-header__logo">
-                    <a href="index.html"><img src="images/newlogo.png" width="20%" alt="Toni Williams Web Development"> 
-                    </a>
-                </div>
-                <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
-            </div> <!-- end s-header__block -->
-            <div class="row s-header__nav-wrap">
-                <nav class="s-header__nav">
-                    <ul>
-                        <li class="current"><a href="#intro" class="smoothscroll">About Me</a></li>
-                        <li><a href="#works" class="smoothscroll">Projects</a></li>
-                        <li><a href="#blog" class="smoothscroll">Blog Posts</a></li>
-                        <li><a href="#contact" class="smoothscroll">Contact</a></li>
-                    </ul>
-                </nav>
-                
-            </div>
-             <!-- end s-header__nav-wrap -->
-
-        </header>
-         <!-- end s-header -->
-
-        <!-- # intro 
-        ================================================== -->
-       <main>
-        <section id="intro" class="s-intro target-section">
-            <div class="row">
-                <div class="column">
-                   <div class="s-intro__top-block">
-                        <span class="s-intro__bg"></span>
-                        <h1 class="s-intro__text">
-             <span>Toni Williams </span> </h1>
-                    </div> 
-                </div>
-            </div>
-      <div class="row row-x-center s-intro__about-wrap">
-                  <h3 class="text-pretitle">About Me</h3>
-
-                  <p>
-                      I bring a unique perspective to the intersection of technology and security. Driven by curiosity, I committed 30 weeks to learn how to code through an organization called 100 Devs.
-I spent 30 weeks freelancing, volunteering with community initiatives like Grassroots Grocery, and building full-stack web applications using the MERN stack. 
-Now, I am a graduate student working on obtaining my Master's Degree in Digital Forensics and Cybersecurity. I’m passionate about building secure, scalable systems that address modern security challenges. 
-                                  </div>  
-        </section>  
-        </main>
-
-        <!--- ## works ================================================== -->
-        <section id="works" class="s-works target-section">
-
-            <div class="row section-header section-header--dark has-bottom-sep"> 
-                <div class="column lg-12">
-    <h3 class="text-pretitle">Projects</h3>
-             
-                </div>
-            </div>  
-  
-  
-                <div class="card">
-                    <h2>City Spaces</h2>
-                    <div class="contain">
-                    <img src="images/cc.gif" >
-                    <div class="content-details">
-                    <p class="tech"> NodeJS, ExpressJS, MongoDB, Tailwind CSS, Google OAuth </p>
-                    <p> A powerful tool that consolidates volunteer opportunities into a single portal. Users can facilitate a reflection discussions allowing them to share their experiences with others.
-                        Includes social features including the ability to comment and like posts. Also includes search and filtering options.
-                    </p>
-                     <a href="https://github.com/ToniWilliams1/CitySpacesNY"_blank"><button>GitHub <i class="fa-brands fa-github"></i></button></a><a href="https://cityspaces-1.onrender.com"target="_blank"> <button>Visit <i class="fa-solid fa-arrow-pointer"></i></button></a>
+  <div class="hero" id="top">
+    <div>
+      <h1>Toni<br>Williams</h1>
+      <p class="lede">Investigator moving into cybersecurity. I test the apps I build for security flaws and document what I find the way I'd document a case.</p>
     </div>
+    <aside>
+      <img class="portrait" src="assets/img/toni.jpg" alt="Portrait of Toni Williams" width="800" height="1000">
+      <dl class="record">
+        <div><dt>Now</dt><dd>Investigator, NYC Department of Education</dd></div>
+        <div><dt>Studying</dt><dd>MS, Digital Forensics &amp; Cybersecurity, John Jay College (Fall 2027)</dd></div>
+        <!-- CONFIRM: keep this line only once the Security+ pass is official -->
+        <div><dt>Certified</dt><dd>CompTIA Security+</dd></div>
+        <div><dt>Based in</dt><dd>Bronx, New York</dd></div>
+      </dl>
+    </aside>
+  </div>
+</div>
+
+<main>
+  <!-- ================= SECURITY ================= -->
+  <section id="security">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Security work</h2>
+        <p>Application security testing, plus what I bring from five years of investigations and evidence work.</p>
+      </div>
+
+      <article class="exhibit-main hero-exhibit">
+        <div>
+          <h3>Security assessment of CitySpaces</h3>
+          <p>I ran a full application security assessment against CitySpaces, a Node.js and Express app I built with MongoDB, Passport authentication and Google OAuth.</p>
+          <p>I scoped the test to the OWASP Top 10 and OWASP ASVS Level 1, tested the running app and its source code, and wrote up each finding with its risk and a fix in a remediation report.</p>
+          <ul class="scope" aria-label="Tools used">
+            <li>Burp Suite</li><li>OWASP ZAP</li><li>Semgrep</li><li>Snyk</li><li>npm audit</li><li>gitleaks</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/ToniWilliams1/CitySpaces">Source code on GitHub</a>
+          </div>
+          <p class="note" style="margin-top:1rem">Remediation report available on request.</p>
+        </div>
+        <ol class="steps" aria-label="Assessment process">
+          <li><div><strong>Scope</strong><span>Set the test against the OWASP Top 10 and the ASVS Level 1 requirements.</span></div></li>
+          <li><div><strong>Dynamic testing</strong><span>Intercepted and replayed traffic in Burp Suite and ran OWASP ZAP scans against the live app.</span></div></li>
+          <li><div><strong>Code and dependency review</strong><span>Scanned the source with Semgrep and checked third-party packages with Snyk and npm audit.</span></div></li>
+          <li><div><strong>Secrets scan</strong><span>Searched the repository history for committed keys and credentials with gitleaks.</span></div></li>
+          <li><div><strong>Report</strong><span>Documented each finding, its severity and the remediation.</span></div></li>
+        </ol>
+      </article>
+
+      <div class="transfer">
+        <div>
+          <h4>Evidence handling</h4>
+          <p>Tracked evidence and redacted discovery material for trial teams at the Bronx County District Attorney's Office.</p>
+        </div>
+        <div>
+          <h4>Investigations</h4>
+          <p>Investigated use-of-force incidents for the NYC Department of Correction's Investigation Division.</p>
+        </div>
+        <div>
+          <h4>Formal findings</h4>
+          <p>Write findings that apply the Chancellor's Regulations for the NYC Department of Education's Office of Equal Opportunity.</p>
+        </div>
+      </div>
+
+      <div class="creds">
+        <div>
+          <h4>Graduate coursework</h4>
+          <ul>
+            <li>Network Security <span>(FCM 742)</span></li>
+            <li>Forensic Management of Digital Evidence <span>(FCM 760, in progress)</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Frameworks I work with</h4>
+          <ul>
+            <li>OWASP Top 10 and ASVS</li>
+            <li>NIST, ISO 27001 and CIS Controls</li>
+          </ul>
+        </div>
+      </div>
     </div>
-                    </div>
-             
-                    <div class="card">
-                        <h2>Crypto Connect</h2>
-                        <div class="contain">
-                        <img src="images/cryptoconnect.gif" >
-                        <div class="content-details">
+  </section>
 
-                        <p class="tech"> Node.JS, MongoDB, Express.JS, Coinlib API, PassportJS, Tailwind CSS, OAuth, Passport JS Coinbase Authentication Strategy </p>
-                       <p> A web application that leverages live crypto market data to give users real-time insights into market trends and opportunities, empowering them to make informed investment decisions.
-                       </p>
-                        <a href="https://github.com/ToniWilliams1/CryptoConnect"target="_blank"><button>GitHub<i class="fa-brands fa-github"></i></button></a><a href="https://officialcryptoconnect.herokuapp.com/"target="_blank"> <button>Visit <i class="fa-solid fa-arrow-pointer"></i></button></a>
-       </div>
-       </div>
-                       </div> 
-                       <div class="card">
-                        <h2>LA Stargazers Community Photo of The Day</h2>
-                        <div class="contain">
-                        <img src="images/nasa apod.gif" >
-                        <div class="content-details">
+  <!-- ================= DEVELOPMENT ================= -->
+  <section id="development">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Development</h2>
+        <p>Full-stack apps I built after 30 weeks of training with 100Devs, plus sites for local businesses.</p>
+      </div>
 
-                        <p class="tech"> HTML, Tailwind CSS, Daisy UI, JavaScript, Node.JS, NASA API </p>
-                       <p> We're going on a trip in our favorite rocket ship! Let's explore outer space. Users can enter any date of their choosing and see a photo, description of the photo, the photographer, and the location of the content.
-                       </p>
-                        <a href="https://github.com/ToniWilliams1/NASA-Astronomy-Picture-Of-The-Day"target="_blank"><button>GitHub<i class="fa-brands fa-github"></i></button></a><a href="https://nasa-astronomy-picture-of-the-day-go3g.onrender.com"target="_blank"> <button>Visit <i class="fa-solid fa-arrow-pointer"></i></button></a>
-       </div>
-       </div>
-                       </div> 
-                       
-                    <div class="card">
-                        <h2>Goddess Hair Salon</h2>
-                        <div class="contain">
-<img src="images/gif.gif">
-<div class="content-details">
+      <div class="apps">
+        <article class="app">
+          <div class="shot"><img src="assets/img/cityspaces.jpg" alt="CitySpaces home page with two volunteers carrying trash bags in a field" loading="lazy" width="1000" height="571"></div>
+          <div>
+            <h3>CitySpaces</h3>
+            <p class="stack">Node.js, Express, MongoDB, Passport, Google OAuth, Tailwind CSS, NYC Open Data API</p>
+            <p>Brings 600+ New York City volunteer opportunities into one place. Users filter by borough and category, save and track events, and post reflections that others can comment on and like.</p>
+            <div class="links"><a href="https://cityspaces-1.onrender.com">Visit the live site</a><a href="https://github.com/ToniWilliams1/CitySpaces">GitHub</a></div>
+          </div>
+        </article>
 
-                        <p class="tech"> HTML, CSS, JavaScript</p>
-                       <p> Modern, fully responsive, and semantically structured one-page portfolio site to capture the business aesthetic and allow users to get information about the services provided at the salon, understand the company's mission and purpose, and submit inquiries directly to the stylist through the web application.
-                       </p>
-                        <a href="https://github.com/ToniWilliams1/GoddessHairSalon"target="_blank"><button>GitHub<i class="fa-brands fa-github"></i></button></a><a href="https://goddesshairsalon.onrender.com"target="_blank"> <button>Visit <i class="fa-solid fa-arrow-pointer"></i></button></a>
-       </div>
-       </div>
-                       </div> 
+        <article class="app">
+          <div class="shot"><img src="assets/img/cryptoconnect.jpg" alt="Crypto Connect landing page with coin icons around a central logo" loading="lazy" width="1000" height="543"></div>
+          <div>
+            <h3>Crypto Connect</h3>
+            <p class="stack">Node.js, Express, MongoDB, Passport with a custom Coinbase OAuth strategy, Coinlib API, Tailwind CSS</p>
+            <p>A social app built on live crypto market data. Users sign in with their Coinbase account and post and discuss trades. I wrote up the Coinbase OAuth integration as a tutorial.</p>
+            <div class="links"><a href="https://github.com/ToniWilliams1/CryptoConnect">GitHub</a></div>
+          </div>
+        </article>
 
+        <article class="app">
+          <div class="shot"><img src="assets/img/stargazers.jpg" alt="Astronomy photo of the day card showing a photo and its description" loading="lazy" width="1000" height="567"></div>
+          <div>
+            <h3>LA Stargazers Photo of the Day</h3>
+            <p class="stack">JavaScript, Node.js, NASA API, Tailwind CSS, DaisyUI</p>
+            <p>Pick any date and see NASA's astronomy photo for that day, with its description, photographer and location.</p>
+            <div class="links"><a href="https://nasa-astronomy-picture-of-the-day-go3g.onrender.com">Visit the live site</a><a href="https://github.com/ToniWilliams1/NASA-Astronomy-Picture-Of-The-Day">GitHub</a></div>
+          </div>
+        </article>
+      </div>
 
-                       <div class="card">
-                        <h2>LUXE BAR</h2>
-                        <div class="contain">
-                        <img src="images/gif-2.gif" >
-                        <div class="content-details">
-                        <p class="tech"> HTML, Tailwind CSS, NodeJS, Daisy-UI, The Cocktail DB API</p>
-                        <p> Bottoms up. Let's make a drink, together at the L U X E Bar!Choose your drink, and browse through over 600 drinks and 489 ingredients. If you don't know what drink to choose, we have a "Random Drink Me" button that will select one at random.
-                        </p>
-                         <a href="https://github.com/ToniWilliams1/LUXE-BAR"_blank"><button>GitHub <i class="fa-brands fa-github"></i></button></a><a href="https://luxebar.onrender.com"target="_blank"> <button>Visit <i class="fa-solid fa-arrow-pointer"></i></button></a>
-        </div>
-        </div>
-                        </div>
+      <h3 class="small-head">Sites for businesses and community groups</h3>
+      <div class="sites">
+        <article class="site">
+          <div class="shot"><img src="assets/img/grassroots.jpg" alt="Grassroots Grocery event coordinator sign-in screen" loading="lazy" width="1000" height="549"></div>
+          <h4>Grassroots Grocery</h4>
+          <p>Volunteer portal for event coordinators, built in React as a volunteer project.</p>
+        </article>
+        <article class="site">
+          <div class="shot"><img src="assets/img/goddess.jpg" alt="Goddess Hair Salon page with three stylists" loading="lazy" width="1000" height="555"></div>
+          <h4>Goddess Hair Salon</h4>
+          <p>Responsive one-page site where clients see services and send inquiries to the stylist.</p>
+          <div class="links"><a href="https://goddesshairsalon.onrender.com">Live site</a><a href="https://github.com/ToniWilliams1/GoddessHairSalon">GitHub</a></div>
+        </article>
+        <article class="site">
+          <div class="shot"><img src="assets/img/topshot.jpg" alt="Top Shot Photography mission section with a row of photos" loading="lazy" width="1000" height="567"></div>
+          <h4>Top Shot Photography</h4>
+          <p>Portfolio site for a local photographer, with a form to book a shoot.</p>
+          <div class="links"><a href="https://topshotphotography.onrender.com/">Live site</a><a href="https://github.com/ToniWilliams1/TopShotPhotography">GitHub</a></div>
+        </article>
+        <article class="site">
+          <div class="shot"><img src="assets/img/levelground.jpg" alt="Level Ground MMA page with a group photo of students" loading="lazy" width="1000" height="546"></div>
+          <h4>Level Ground MMA</h4>
+          <p>Site for a martial arts studio covering its mission, programs and events.</p>
+          <div class="links"><a href="https://level-ground-mma.onrender.com">Live site</a><a href="https://github.com/ToniWilliams1/Level-Ground-MMA">GitHub</a></div>
+        </article>
+        <article class="site">
+          <div class="shot"><img src="assets/img/luxe.jpg" alt="Luxe Bar cocktail recipe page" loading="lazy" width="1000" height="568"></div>
+          <h4>Luxe Bar</h4>
+          <p>Browse more than 600 cocktails from TheCocktailDB, or let the app pick one at random.</p>
+          <div class="links"><a href="https://luxebar.onrender.com">Live site</a><a href="https://github.com/ToniWilliams1/LUXE-BAR">GitHub</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-                       <div class="card">
-                        <h2>Top Shot Photography</h2>
-                        <div class="contain">
-<img src="images/topshot.gif">
-<div class="content-details">
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Experience</h2>
+      </div>
+      <ol class="timeline" reversed>
+        <li>
+          <div class="when">2025 to now</div>
+          <div>
+            <h3>Investigator</h3>
+            <p class="org">NYC Department of Education, Office of Equal Opportunity</p>
+            <p>Investigate complaints and write formal findings under the Chancellor's Regulations.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2023 to 2025</div>
+          <div>
+            <h3>Investigator</h3>
+            <p class="org">NYC Department of Correction, Investigation Division</p>
+            <p>Investigated use-of-force incidents. Trained to testify at OATH hearings.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2021 to 2023</div>
+          <div>
+            <h3>Trial Preparation Assistant</h3>
+            <p class="org">Bronx County District Attorney's Office</p>
+            <p>Tracked evidence and redacted discovery material for trial teams.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">Education</div>
+          <div>
+            <h3>MS, Digital Forensics and Cybersecurity</h3>
+            <p class="org">John Jay College of Criminal Justice, CUNY. Expected Fall 2027.</p>
+            <p>BS in Criminal Justice, cum laude, Buffalo State, 2021. Completed the 30-week 100Devs software engineering program.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-                        <p class="tech"> HTML, CSS, JavaScript</p>
-                       <p> Fully responsive and semantically structured one-page portfolio site for a local photographer. Users can learn about studio, portfolio, and schedule a photoshoot inquiry.
-                       </p>
-                        <a href="https://github.com/ToniWilliams1/TopShotPhotography"target="_blank"><button>GitHub<i class="fa-brands fa-github"></i></button></a><a href="https://topshotphotography.onrender.com/"target="_blank"> <button>Visit <i class="fa-solid fa-arrow-pointer"></i></button></a>
-       </div>
-       </div>
-                       </div> 
-                       
-                       <div class="card">
-                        <h2>Levelground MMA Studio </h2>
-                        <div class="contain">
-                        <img src="images/gif-3.gif" >
-                        <div class="content-details">
-                        <p class="tech"> HTML, CSS, JavaScript</p>
-                        <p> Provide users with information about the company mission and values.
-                            Elaborate on the different events hosted by Level Ground MMA.
-                        </p>
-                         <a href="https://github.com/ToniWilliams1/Level-Ground-MMA"_blank"><button>GitHub <i class="fa-brands fa-github"></i></button></a><a href="https://level-ground-mma.onrender.com"target="_blank"> <button>Visit <i class="fa-solid fa-arrow-pointer"></i></button></a>
-        </div>
-        </div>
-                        </div>
-            </section>
+  <!-- ================= WRITING ================= -->
+  <section id="writing">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Writing</h2>
+      </div>
+      <div class="posts">
+        <article>
+          <h3><a href="https://medium.com/@toniwilliamsdev/passport-strategy-for-authenticating-with-coinbase-with-nodejs-using-passportjs-e3decc756ff5">Tutorial: OAuth 2.0 with Coinbase</a></h3>
+          <p>A step-by-step guide to adding Coinbase sign-in to a Node.js app with Passport.</p>
+        </article>
+        <article>
+          <h3><a href="https://medium.com/@toniwilliamsdev/to-read-or-not-to-read-bb75114232f8">To Read or Not to Read?</a></h3>
+          <p>Tips for getting through long, dense technical documentation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-         
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Contact</h2>
+        <p>I'm looking for roles in GRC, cyber risk, digital forensics and application security.</p>
+      </div>
+      <div class="big">
+        <a href="https://www.linkedin.com/in/toniwilliams03/">LinkedIn</a>
+        <a href="https://github.com/ToniWilliams1">GitHub</a>
+        <a href="https://medium.com/@toniwilliamsdev/">Medium</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-        <!--Services-->
-        <section id="blog" class="s-services target-section">
-            <div class="row section-header has-bottom-sep">
-                <div class="column lg-12">
-
-                <h3 class="text-pretitle" >
-                            Blog Posts
-                    </h3>
-              </div>  
-            </div> 
-      
-            <div class="row services-list block-lg-one-half block-tab-whole" data-animate-block>
-                <div class="column service-item" data-animate-el>
-                    <div class="service-icon-block">
-                        <span><?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 300 300" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink"><g transform="matrix(1,0,0,1,0,110)"><path d="M45,40.2C45,52.7 34.9,62.8 22.5,62.8C10.1,62.8 0,52.8 0,40.2C0,27.6 10.1,17.6 22.5,17.6C34.9,17.6 45,27.7 45,40.2" style="fill-rule:nonzero;"/><path d="M69.7,40.2C69.7,52 64.7,61.5 58.5,61.5C52.3,61.5 47.3,52 47.3,40.2C47.3,28.4 52.3,18.9 58.5,18.9C64.6,18.9 69.7,28.5 69.7,40.2" style="fill-rule:nonzero;"/><path d="M79.7,40.2C79.7,50.7 77.9,59.3 75.7,59.3C73.5,59.3 71.7,50.7 71.7,40.2C71.7,29.7 73.5,21.1 75.7,21.1C78,21.1 79.7,29.7 79.7,40.2" style="fill-rule:nonzero;"/><path d="M141.8,19.6L141.9,19.1L129.1,19.1L117.2,47L105.3,19.1L91.5,19.1L91.5,19.6L91.6,19.6C93.9,20.1 95.1,20.9 95.1,23.7L95.1,56.9C95.1,59.7 93.9,60.5 91.6,61L91.5,61L91.5,61.5L100.9,61.5L100.9,61L100.8,61C98.5,60.5 97.3,59.7 97.3,56.9L97.3,25.6L112.6,61.5L113.5,61.5L129.2,24.6L129.2,57.7C129,59.9 127.8,60.6 125.7,61.1L125.6,61.1L125.6,61.6L141.9,61.6L141.9,61.1L141.8,61.1C139.7,60.6 138.5,59.9 138.3,57.7L138.3,23.7C138.3,20.9 139.5,20.1 141.8,19.6M149.3,41.5C149.6,35.5 151.7,31.2 155.3,31.2C156.4,31.2 157.3,31.6 158.1,32.3C159.6,33.8 160.4,36.9 160.2,41.6L149.3,41.6L149.3,41.5ZM149.1,43.2L168.2,43.2L168.2,43.1C168.1,38.5 166.8,35 164.3,32.6C162.1,30.5 158.8,29.3 155.4,29.3L155.3,29.3C153.5,29.3 151.3,29.7 149.8,30.5C148,31.3 146.5,32.5 145.2,34.1C143.1,36.7 141.9,40.2 141.5,44.1L141.5,46.4C141.7,55.3 146.5,62.4 155,62.4C162.5,62.4 166.8,56.9 167.9,49.6L167.4,49.4C165.5,53.3 162.1,55.7 158.2,55.4C152.8,55.2 148.7,49.8 149.1,43.2M189.8,55.3C189.2,56.8 187.9,57.6 186.1,57.6C184.3,57.6 182.7,56.4 181.6,54.2C180.4,51.9 179.7,48.5 179.7,44.6C179.7,36.4 182.2,31.1 186.2,31.1C187.8,31.1 189.1,31.9 189.8,33.3L189.8,55.3ZM202.4,61.1C200.1,60.5 198.9,59.7 198.9,56.7L198.9,17.1L184.7,21.3L184.7,21.8L184.8,21.8C186.8,21.6 188.1,21.9 188.9,22.6C189.5,23.2 189.8,24 189.8,25.2L189.8,30.6C188.4,29.7 186.7,29.3 184.7,29.3C180.6,29.3 176.9,31 174.2,34.2C171.4,37.5 169.9,41.9 169.9,47.1C169.9,56.3 174.4,62.5 181.2,62.5C185.2,62.5 188.3,60.3 189.8,56.7L189.8,61.6L202.5,61.6L202.4,61.1ZM214.6,22.5C214.6,19.6 212.4,17.4 209.5,17.4C206.6,17.4 204.4,19.6 204.4,22.5C204.4,25.4 206.6,27.6 209.5,27.6C212.4,27.6 214.6,25.4 214.6,22.5M217.9,61.1C215.6,60.5 214.4,59.7 214.4,56.7L214.4,29.4L201.7,33.1L201.7,33.6L201.8,33.6C204.6,33.8 205.3,34.8 205.3,38L205.3,61.6L218,61.6L217.9,61.1ZM250.6,61.1C248.3,60.5 247.1,59.7 247.1,56.7L247.1,29.4L234.9,33L234.9,33.5L235,33.5C237.3,33.7 237.9,34.7 237.9,38L237.9,55.3C237.1,56.8 235.7,57.7 234,57.7C231.2,57.7 229.7,55.8 229.7,52.4L229.7,29.4L217,33.1L217,33.6L217.1,33.6C219.9,33.8 220.6,34.8 220.6,38L220.6,52.6C220.6,53.6 220.7,54.6 220.9,55.6L221.1,56.6C222.2,60.5 225,62.5 229.4,62.5C233.1,62.5 236.4,60.2 237.9,56.6L237.9,61.6L250.6,61.6L250.6,61.1ZM300,61.6L300,61.1L299.9,61.1C297.4,60.5 296.4,59.4 296.4,57.2L296.4,38.6C296.4,32.8 293.1,29.4 287.7,29.4C283.7,29.4 280.4,31.7 279.1,35.3C278.1,31.5 275.1,29.4 270.8,29.4C267,29.4 264,31.4 262.7,34.8L262.7,29.5L250,33L250,33.5L250.1,33.5C252.8,33.7 253.6,34.7 253.6,37.9L253.6,61.7L265.5,61.7L265.5,61.2L265.4,61.2C263.4,60.7 262.7,59.9 262.7,57.6L262.7,36.2C263.2,35 264.3,33.5 266.4,33.5C269,33.5 270.4,35.3 270.4,38.9L270.4,61.6L282.3,61.6L282.3,61.1L282.2,61.1C280.2,60.6 279.5,59.8 279.5,57.5L279.5,38.6C279.5,37.9 279.4,37.2 279.3,36.5C279.9,35.1 281,33.5 283.2,33.5C285.9,33.5 287.2,35.3 287.2,38.9L287.2,61.6L300,61.6Z" style="fill-rule:nonzero;"/></g></svg></span>
-                    </div>
-                    <div class="service-text">
-
-                                <h3 class="h4">To Read or Not To Read?</h3>
-                                <p>As a software engineer, you'll inevitably encounter complex and lengthy documentation that can be challenging to read and understand. However, there are several tips and tricks that can simplify this process and help you extract valuable insights from these documents.</p>
-                   <a href="https://medium.com/@toniwilliamsdev/to-read-or-not-to-read-bb75114232f8"target="_blank"><button>Read <i class="fa-brands fa-medium"></i></button></a>
-                            </div>
-                        </div>
-                <div class="column service-item" data-animate-el>
-                    <div class="service-icon-block">
-                        <span> <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 300 300" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink"><g transform="matrix(1,0,0,1,0,110)"><path d="M45,40.2C45,52.7 34.9,62.8 22.5,62.8C10.1,62.8 0,52.8 0,40.2C0,27.6 10.1,17.6 22.5,17.6C34.9,17.6 45,27.7 45,40.2" style="fill-rule:nonzero;"/><path d="M69.7,40.2C69.7,52 64.7,61.5 58.5,61.5C52.3,61.5 47.3,52 47.3,40.2C47.3,28.4 52.3,18.9 58.5,18.9C64.6,18.9 69.7,28.5 69.7,40.2" style="fill-rule:nonzero;"/><path d="M79.7,40.2C79.7,50.7 77.9,59.3 75.7,59.3C73.5,59.3 71.7,50.7 71.7,40.2C71.7,29.7 73.5,21.1 75.7,21.1C78,21.1 79.7,29.7 79.7,40.2" style="fill-rule:nonzero;"/><path d="M141.8,19.6L141.9,19.1L129.1,19.1L117.2,47L105.3,19.1L91.5,19.1L91.5,19.6L91.6,19.6C93.9,20.1 95.1,20.9 95.1,23.7L95.1,56.9C95.1,59.7 93.9,60.5 91.6,61L91.5,61L91.5,61.5L100.9,61.5L100.9,61L100.8,61C98.5,60.5 97.3,59.7 97.3,56.9L97.3,25.6L112.6,61.5L113.5,61.5L129.2,24.6L129.2,57.7C129,59.9 127.8,60.6 125.7,61.1L125.6,61.1L125.6,61.6L141.9,61.6L141.9,61.1L141.8,61.1C139.7,60.6 138.5,59.9 138.3,57.7L138.3,23.7C138.3,20.9 139.5,20.1 141.8,19.6M149.3,41.5C149.6,35.5 151.7,31.2 155.3,31.2C156.4,31.2 157.3,31.6 158.1,32.3C159.6,33.8 160.4,36.9 160.2,41.6L149.3,41.6L149.3,41.5ZM149.1,43.2L168.2,43.2L168.2,43.1C168.1,38.5 166.8,35 164.3,32.6C162.1,30.5 158.8,29.3 155.4,29.3L155.3,29.3C153.5,29.3 151.3,29.7 149.8,30.5C148,31.3 146.5,32.5 145.2,34.1C143.1,36.7 141.9,40.2 141.5,44.1L141.5,46.4C141.7,55.3 146.5,62.4 155,62.4C162.5,62.4 166.8,56.9 167.9,49.6L167.4,49.4C165.5,53.3 162.1,55.7 158.2,55.4C152.8,55.2 148.7,49.8 149.1,43.2M189.8,55.3C189.2,56.8 187.9,57.6 186.1,57.6C184.3,57.6 182.7,56.4 181.6,54.2C180.4,51.9 179.7,48.5 179.7,44.6C179.7,36.4 182.2,31.1 186.2,31.1C187.8,31.1 189.1,31.9 189.8,33.3L189.8,55.3ZM202.4,61.1C200.1,60.5 198.9,59.7 198.9,56.7L198.9,17.1L184.7,21.3L184.7,21.8L184.8,21.8C186.8,21.6 188.1,21.9 188.9,22.6C189.5,23.2 189.8,24 189.8,25.2L189.8,30.6C188.4,29.7 186.7,29.3 184.7,29.3C180.6,29.3 176.9,31 174.2,34.2C171.4,37.5 169.9,41.9 169.9,47.1C169.9,56.3 174.4,62.5 181.2,62.5C185.2,62.5 188.3,60.3 189.8,56.7L189.8,61.6L202.5,61.6L202.4,61.1ZM214.6,22.5C214.6,19.6 212.4,17.4 209.5,17.4C206.6,17.4 204.4,19.6 204.4,22.5C204.4,25.4 206.6,27.6 209.5,27.6C212.4,27.6 214.6,25.4 214.6,22.5M217.9,61.1C215.6,60.5 214.4,59.7 214.4,56.7L214.4,29.4L201.7,33.1L201.7,33.6L201.8,33.6C204.6,33.8 205.3,34.8 205.3,38L205.3,61.6L218,61.6L217.9,61.1ZM250.6,61.1C248.3,60.5 247.1,59.7 247.1,56.7L247.1,29.4L234.9,33L234.9,33.5L235,33.5C237.3,33.7 237.9,34.7 237.9,38L237.9,55.3C237.1,56.8 235.7,57.7 234,57.7C231.2,57.7 229.7,55.8 229.7,52.4L229.7,29.4L217,33.1L217,33.6L217.1,33.6C219.9,33.8 220.6,34.8 220.6,38L220.6,52.6C220.6,53.6 220.7,54.6 220.9,55.6L221.1,56.6C222.2,60.5 225,62.5 229.4,62.5C233.1,62.5 236.4,60.2 237.9,56.6L237.9,61.6L250.6,61.6L250.6,61.1ZM300,61.6L300,61.1L299.9,61.1C297.4,60.5 296.4,59.4 296.4,57.2L296.4,38.6C296.4,32.8 293.1,29.4 287.7,29.4C283.7,29.4 280.4,31.7 279.1,35.3C278.1,31.5 275.1,29.4 270.8,29.4C267,29.4 264,31.4 262.7,34.8L262.7,29.5L250,33L250,33.5L250.1,33.5C252.8,33.7 253.6,34.7 253.6,37.9L253.6,61.7L265.5,61.7L265.5,61.2L265.4,61.2C263.4,60.7 262.7,59.9 262.7,57.6L262.7,36.2C263.2,35 264.3,33.5 266.4,33.5C269,33.5 270.4,35.3 270.4,38.9L270.4,61.6L282.3,61.6L282.3,61.1L282.2,61.1C280.2,60.6 279.5,59.8 279.5,57.5L279.5,38.6C279.5,37.9 279.4,37.2 279.3,36.5C279.9,35.1 281,33.5 283.2,33.5C285.9,33.5 287.2,35.3 287.2,38.9L287.2,61.6L300,61.6Z" style="fill-rule:nonzero;"/></g></svg></span>
-                    </div>
-                    <div class="service-text">
-                        <h3 class="h4">Tutorial: OAuth 2.0 with Coinbase</h3>
-                        <p>Are you looking to add user authentication to your full-stack application using Coinbase? Our guide provides a step-by-step process for integrating Coinbase authentication into your NodeJS application using PassportJS.
-
-
-                        </p>
-                       <a href="https://medium.com/@toniwilliamsdev/passport-strategy-for-authenticating-with-coinbase-with-nodejs-using-passportjs-e3decc756ff5"target="_blank"><button>Read <i class="fa-brands fa-medium"></i> </button></a>
-
-                    </div>
-                </div>
-   
-        </section> 
-
-        <!-- ## contact
-        ================================================== -->
-        <section id="contact" class="s-contact target-section">
-            <div class="row section-header section-header--dark  has-bottom-sep">
-                <div class="column lg-12">
-                    <h3 class="text-pretitle">Contact</h3>
-                    <h1 class="text-display-title">
-                    </h1>
-                </div>
-            </div>
-            <div class="row row-x-center text-center ">
-                <div class="column lg-12"> 
-                    <a href="https://www.linkedin.com/in/toniwilliams03/"target="_blank">LinkedIn <i class="fa-brands fa-linkedin"></i> </a> <br>
-                   <a href="https://github.com/ToniWilliams1"target="_blank">GitHub <i class="fa-brands fa-github"></i></a> <br>
-                  <a href="https://medium.com/@toniwilliamsdev/"target="_blank"> Medium <i class="fa-brands fa-medium"></i></a>
-
-                  <div class="btn-wrap">   
-                    </div>
-                </div>
-            </div>
-            <footer class="s-footer">
-                <div class="row s-footer__top">
-                    <div class="s-footer__top">
-                    <div class="column lg-3 md-4 stack-on-700 s-footer__block contact-social">
-                    </div>
-                   <div class="column lg-3 md-12 s-footer__block contact-number">        
-                       
-                    </div>
-                </div>
-                
-                <!-- end s-footer__top -->
-                <div class="row s-footer__bottom">
-                    <div class="column ss-copyright"></div>         
-                    </div>
-                    </div>
-                </div> 
-                
-                <!-- end s-footer__top -->
-            </footer>
-        </section>
-        
-        <!-- end s-contact -->
-    </div> <!-- end -s-pagewrap -->
-
-    <!-- photoswipe background
-    ================================================== -->
-    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
-
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-
-            <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-            </div>
-
-            <div class="pswp__ui pswp__ui--hidden">
-                <div class="pswp__top-bar">
-                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title=
-                    "Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
-                    "Zoom in/out"></button>
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                            <div class="pswp__preloader__cut">
-                                <div class="pswp__preloader__donut"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
-                "Next (arrow right)"></button>
-                <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
-                </div>
-            </div>
-
-        </div>
-
-    </div> <!-- end photoSwipe background -->
-
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+<footer>
+  <div class="wrap">Built by hand in HTML and CSS.</div>
+</footer>
 
 </body>
-
 </html>
-
-

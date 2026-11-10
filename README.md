@@ -1,23 +1,11 @@
-## Toni Williams Web Development 
+# Toni Williams — Portfolio
 
-Portfolio for Toni Williams.
+Personal portfolio covering security work (application security testing, investigations background, graduate coursework) and full-stack development projects.
 
-## Key Technologies and Packages
+Static site: one `index.html` with inline CSS, images in `assets/img/`. No build step.
 
-• CSS <br>
+## Run locally
+Open `index.html` in a browser.
 
-• HTML<br>
-
-• JavaScript <br>
-
-• Render
-
-## Core Features
-• Allow users to see projects and latest blog posts. <br>
-
-• Displays contact information, GitHub repo links, and live links to projects. <br>
-
-
-## [Demo](https://toniwilliamswebdev.onrender.com)
-<img width="1438" alt="Screen Shot 2022-12-15 at 10 37 53 PM" src="https://user-images.githubusercontent.com/100317017/208016530-88948907-4eee-45be-aebf-b30580d4203c.png">
-
+## Deploy
+Hosted on Render as a static site. Publish directory: repository root.
